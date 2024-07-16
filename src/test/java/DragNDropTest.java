@@ -3,10 +3,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.exist;
-import static com.codeborne.selenide.DragAndDropOptions.to;
 import static com.codeborne.selenide.Selectors.byTagAndText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 
 public class DragNDropTest {
@@ -21,7 +19,10 @@ public class DragNDropTest {
     @Test
     void dragNDropTest() {
         open("drag_and_drop");
-        $("#column-a").dragAndDrop(to("#column-b"));
+        //Приведены два варианта перемещения:
+        //$("#column-a").dragAndDrop(to("#column-b"));
+        actions().moveToElement($("#column-a")).clickAndHold().moveByOffset(150, 0).release().perform();
+
         $("#column-a").$(byTagAndText("header", "B")).should(exist);
 
 
