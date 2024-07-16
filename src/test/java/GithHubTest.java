@@ -21,7 +21,6 @@ public class GithHubTest {
         open("");
         $(byTagAndText("button", "Solutions")).hover();
         $(byTagAndText("a", "Enterprise")).click();
-        $("[data-testid = SubNav-root-heading]").shouldHave(text("Enterprise"));
-
+        $("#hero-section-brand-heading").shouldHave(text("The AI-powered developer platform."));
     }
 }
